@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Day7Reward from "../assets/Day-7.png";
+import API_URL from "../config/api.js";
 
 function UltimateReward() {
   const [streak, setStreak] = useState(null);
@@ -24,7 +25,7 @@ function UltimateReward() {
         const [streakResponse, rewardsResponse] =
           await Promise.all([
             axios.get(
-              "http://localhost:2005/api/streak",
+              `${API_URL}/api/streak`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -33,7 +34,7 @@ function UltimateReward() {
             ),
 
             axios.get(
-              "http://localhost:2005/api/rewards"
+              `${API_URL}/api/rewards`
             ),
           ]);
 

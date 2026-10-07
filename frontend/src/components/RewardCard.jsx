@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../config/api.js";
 
 function RewardCard() {
   const [status, setStatus] = useState("loading");
@@ -25,7 +26,7 @@ function RewardCard() {
         const [streakResponse, rewardsResponse] =
           await Promise.all([
             axios.get(
-              "http://localhost:2005/api/streak",
+              `${API_URL}/api/streak`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -34,7 +35,7 @@ function RewardCard() {
             ),
 
             axios.get(
-              "http://localhost:2005/api/rewards"
+              `${API_URL}/api/rewards`    
             ),
           ]);
 
@@ -120,7 +121,7 @@ function RewardCard() {
       }
 
       const response = await axios.post(
-        "http://localhost:2005/api/streak/claim",
+        `${API_URL}/api/streak/claim`,
         {},
         {
           headers: {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../config/api.js";
 
 function VerifyOTP() {
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ function VerifyOTP() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:2005/api/auth/verify-otp",
+        `${API_URL}/api/auth/verify-otp`,
         {
           identifier,
           otp: enteredOTP,
@@ -157,7 +158,7 @@ function VerifyOTP() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:2005/api/auth/send-otp",
+        `${API_URL}/api/auth/send-otp`,
         {
           identifier,
           purpose,

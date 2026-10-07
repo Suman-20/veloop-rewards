@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config/api.js";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,12 +57,12 @@ function Navbar() {
       const [streakResponse, walletResponse] =
         await Promise.all([
           axios.get(
-            "http://localhost:2005/api/streak",
+            `${API_URL}/api/streak`,
             config
           ),
 
           axios.get(
-            "http://localhost:2005/api/user/wallet",
+            `${API_URL}/api/user/wallet`,
             config
           ),
         ]);

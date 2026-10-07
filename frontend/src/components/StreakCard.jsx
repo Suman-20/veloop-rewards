@@ -4,6 +4,7 @@ import VEsCoin from "../assets/VEs_Coin.png";
 import Day4 from "../assets/Day-4.png";
 import Day5 from "../assets/Day-5.png";
 import Day7 from "../assets/Day-7.png";
+import API_URL from "../config/api.js";
 
 const initialStreakData = {
   currentStreak: 0,
@@ -27,13 +28,13 @@ function StreakCard() {
         if (!token) return;
 
         const [streakResponse, rewardsResponse] = await Promise.all([
-          axios.get("http://localhost:2005/api/streak", {
+          axios.get(`${API_URL}/api/streak`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          axios.get("http://localhost:2005/api/rewards"),
+          axios.get(`${API_URL}/api/rewards`),
         ]);
 
         const streak = streakResponse.data.streak;

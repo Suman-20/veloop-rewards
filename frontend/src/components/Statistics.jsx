@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../config/api.js";
 
 function Statistics() {
   const [totalRewards, setTotalRewards] = useState(0);
@@ -16,7 +17,7 @@ function Statistics() {
         const [streakResponse, rewardsResponse] =
           await Promise.all([
             axios.get(
-              "http://localhost:2005/api/streak",
+              `${API_URL}/api/streak`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -25,7 +26,7 @@ function Statistics() {
             ),
 
             axios.get(
-              "http://localhost:2005/api/rewards"
+              `${API_URL}/api/rewards`
             ),
           ]);
 

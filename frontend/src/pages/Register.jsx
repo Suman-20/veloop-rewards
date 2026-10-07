@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import API_URL from "../config/api.js";
 
 function Register() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function Register() {
         return;
       }
 
-      const result = await axios.post("http://localhost:2005/api/auth/google", {
+      const result = await axios.post(`${API_URL}/api/auth/google`, {
         credential: googleCredential,
       });
 
@@ -84,7 +85,7 @@ function Register() {
       };
 
       const response = await axios.post(
-        "http://localhost:2005/api/auth/register",
+        `${API_URL}/api/auth/register`,
         payload,
       );
 

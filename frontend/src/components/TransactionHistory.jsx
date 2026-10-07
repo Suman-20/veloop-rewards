@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import VEsCoin from "../assets/VEs_Coin.png";
+import API_URL from "../config/api.js";
 
 function TransactionHistory() {
   const [transactions, setTransactions] = useState([]);
@@ -33,17 +34,17 @@ function TransactionHistory() {
         streakResponse,
       ] = await Promise.all([
         axios.get(
-          "http://localhost:2005/api/user/transactions",
+          `${API_URL}/api/user/transactions`,
           config
         ),
 
         axios.get(
-          "http://localhost:2005/api/user/wallet",
+          `${API_URL}/api/user/wallet`,
           config
         ),
 
         axios.get(
-          "http://localhost:2005/api/streak",
+          `${API_URL}/api/streak`,
           config
         ),
       ]);
