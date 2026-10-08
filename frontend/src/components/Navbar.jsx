@@ -690,9 +690,8 @@ const handleLogout = () => {
 
               <button
                 type="button"
-                onClick={() =>
-                  setProfileOpen(!profileOpen)
-                }
+                 onClick={() => setProfileOpen((prev) => !prev)}
+
                 className="flex w-full items-center justify-between rounded-xl border border-white/5 bg-white/[0.04] px-4 py-3 transition hover:bg-white/[0.06]"
               >
 
