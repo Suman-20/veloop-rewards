@@ -209,23 +209,21 @@ useEffect(() => {
   // =====================================================
   // LOGOUT
   // =====================================================
+const handleLogout = () => {
+  // Remove authentication data
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    localStorage.removeItem("otpIdentifier");
-    localStorage.removeItem("otpPurpose");
+  // Reset navbar state
+  setProfileOpen(false);
+  setIsOpen(false);
+  setUser(null);
+  setStreak(0);
+  setBalance(0);
 
-    setProfileOpen(false);
-    setIsOpen(false);
-
-    setUser(null);
-    setStreak(0);
-    setBalance(0);
-
-    navigate("/login");
-  };
-
+  // Go to login page
+  window.location.replace("/login");
+};
   // =====================================================
   // MOBILE MENU CLOSE
   // =====================================================
